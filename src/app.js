@@ -1,4 +1,4 @@
-// Write your code on this file. Please don't change the existing code
+                // Write your code on this file. Please don't change the existing code
 // unless absolutely needed.
 
 //Initial price of the burger
@@ -47,24 +47,61 @@ function renderPatty() {
 
 function renderCheese() {
   //Trial 1 - Change the visibility of cheese based on state by manipulating the DOM
+  let cheese = document.querySelector("#cheese")
+  if (state.Cheese)
+  cheese.style.display = "inherit"
+  else
+  cheese.style.display = "none"
 }
 
 function renderTomatoes() {
   //Trial 1 - Change the visibility of Tomatoes based on state by manipulating the DOM
+  let tomato = document.querySelector("#tomato")
+  if (state.Tomatoes)
+  tomato.style.display = "inherit"
+  else
+  tomato.style.display = "none"
 }
 
 function renderOnions() {
   //Trial 1 - Change the visibility of Onions based on state by manipulating the DOM
+  let onion = document.querySelector("#onion")
+  if (state.Onions)
+  onion.style.display = "inherit"
+  else
+  onion.style.display = "none"
 }
 
 function renderLettuce() {
   //Trial 1 - Change the visibility of Lettuce based on state by manipulating the DOM
+  let lettuce = document.querySelector("#lettuce")
+  if (state.Lettuce)
+  lettuce.style.display = "inherit"
+  else
+  lettuce.style.display = "none"
 }
 
 document.querySelector(".btn-patty").onclick = function () {
   state.Patty = !state.Patty;
   renderAll();
 };
+document.querySelector(".btn-cheese").onclick = function () {
+  state.Cheese = !state.Cheese;
+  renderAll();
+};           
+document.querySelector(".btn-tomatoes").onclick = function () {
+  state.Tomatoes = !state.Tomatoes;
+  renderAll();
+};  
+document.querySelector(".btn-onions").onclick = function () {
+  state.Onions = !state.Onions;
+  renderAll();
+};           
+document.querySelector(".btn-lettuce").onclick = function () {
+  state.Lettuce = !state.Lettuce;
+  renderAll();
+};           
+
 
 // Trial 2 - Setup event listener for the cheese button
 
@@ -87,3 +124,22 @@ document.querySelector(".btn-patty").onclick = function () {
 //Judgement 1
 //In the p element having price-details as the class, display the calculated
 //price based on ingredients
+
+function renderPrice() {
+  const submit = document.querySelector(".Rectangle5")
+  var sum = 0
+  if(state.Patty)
+  sum = sum +parseInt(ingredients.Patty)
+  if(state.Cheese)
+  sum = sum +parseInt(ingredients.Cheese)
+  if(state.Tomatoes)
+  sum = sum +parseInt(ingredients.Tomatoes)
+  if(state.Onions)
+  sum = sum +parseInt(ingredients.Onions)
+  if(state.Lettuce)
+  sum = sum +parseInt(ingredients.Lettuce)
+}
+
+submit.onclick = (evt) => {
+  document.querySelector(".price-details").innerHTML = sum
+}
